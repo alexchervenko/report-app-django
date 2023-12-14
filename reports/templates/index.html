@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content%}
+<div>
+    <h3>Последние проверенные платы:</h3>
+    {% for board in recently_tested_boards %}
+        <li><a href="#">{{ board.serial_number }}</a></li>
+    {% endfor %}
+    
+</div>
+<div>
+    <h3>Платы подлежащие ремонту:</h3>
+    {% for board in boards_to_repair %}
+        <li><a href="#">{{ board.serial_number }}</a></li>
+    {% endfor %}
+</div>
+{% endblock %}
