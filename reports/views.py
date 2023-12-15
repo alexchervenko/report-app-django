@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic.edit import View, CreateView
+from django.views import View
+from django.views.generic.edit import CreateView, UpdateView
 from .models import Report
 
 
@@ -21,6 +22,13 @@ class Index(View):
 
 
 class ReportCreateView(CreateView):
+    model = Report
+    fields = "__all__"
+    template_name = "reports/report_form.html"
+    success_url = "/reports"
+
+
+class ReportUpdateView(UpdateView):
     model = Report
     fields = "__all__"
     template_name = "reports/report_form.html"
