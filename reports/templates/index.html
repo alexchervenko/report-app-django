@@ -1,17 +1,39 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/reports/index.css' %}" />
+{% endblock %} {% block content%}
 
-{% block content%}
-<div>
-    <h3>Последние проверенные платы:</h3>
-    {% for board in recently_tested_boards %}
-        <li><a href="{% url 'edit_page' board.pk %}">{{ board.serial_number }}</a></li>
-    {% endfor %}
-    
-</div>
-<div>
-    <h3>Платы подлежащие ремонту:</h3>
-    {% for board in boards_to_repair %}
-        <li><a href="{% url 'edit_page' board.pk%}">{{ board.serial_number }}</a></li>
-    {% endfor %}
+<div class="wrapper vh-100">
+  <div class="card" style="width: 25rem">
+    <div class="card-header">
+      <h3>Непроверенные платы:</h3>
+    </div>
+    <ul class="list-group">
+      {% for board in not_tested_boards %}
+      <li class="list-group-item">
+        <a href="{% url 'edit_page' board.pk %}">{{ board.serial_number }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="card" style="width: 25rem; height: 18rem">
+    <div class="card-header">
+      <h3>Платы подлежащие ремонту:</h3>
+    </div>
+    <ul class="list-group">
+      {% for board in boards_to_repair %}
+      <li class="list-group-item">
+        <a href="{% url 'edit_page' board.pk%}">{{ board.serial_number }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <br />
+
+  <a
+    class="btn btn btn-outline-dark"
+    href="{% url 'create_page' %}"
+    role="button"
+    >Новый протокол</a
+  >
 </div>
 {% endblock %}

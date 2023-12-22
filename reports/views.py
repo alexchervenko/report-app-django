@@ -9,13 +9,13 @@ from .models import Report
 
 class Index(View):
     def get(self, request):
-        recently_tested_boards = Report.objects.all()[:5]
         boards_to_repair = Report.objects.filter(status__exact="need_repair")
+        not_tested_boards = Report.objects.filter(status__exact="not_tested")
         return render(
             request,
             template_name="index.html",
             context={
-                "recently_tested_boards": recently_tested_boards,
+                "not_tested_boards": not_tested_boards,
                 "boards_to_repair": boards_to_repair,
             },
         )

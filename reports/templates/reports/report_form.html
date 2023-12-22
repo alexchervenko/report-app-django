@@ -1,13 +1,20 @@
-{% extends 'base.html' %}
-{% block content%}
-    <form action="/reports/add/" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <br>
-        <input class="btn btn-outline-success" type="submit" value="Сохранить">
-        <a class="btn btn-outline-secondary"
-           role="button"
-           aria-pressed="true"
-           href="{% url 'main_page' %}">На главную</a>
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/reports/report_form.css' %}" />
+{% endblock css %} {% block content%}
+<div class="main vh-100">
+  <div class="wrapper">
+    <form action="" method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <br />
+      <input class="btn btn-outline-success" type="submit" value="Сохранить" />
+      <a
+        class="btn btn-outline-secondary"
+        role="button"
+        aria-pressed="true"
+        href="{% url 'main_page' %}"
+        >На главную</a
+      >
     </form>
+  </div>
+</div>
 {% endblock %}

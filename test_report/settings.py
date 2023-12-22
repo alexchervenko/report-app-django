@@ -25,6 +25,29 @@ SECRET_KEY = "django-insecure-i0qb&2d%9ckd8x8--uwtozuu@d&$(8h3zl-*21g@eua@mm_kjh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+# Logs
+LOGGING = {
+    "version": 1,
+    "filters": {
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        }
+    },
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "filters": ["require_debug_true"],
+            "class": "logging.StreamHandler",
+        }
+    },
+    "loggers": {
+        "django.db.backends": {
+            "level": "DEBUG",
+            "handlers": ["console"],
+        }
+    },
+}
+
 ALLOWED_HOSTS = ["127.0.0.1"]
 
 
@@ -122,9 +145,6 @@ STATIC_URL = "static/"
 
 STATIC_ROOT = BASE_DIR / "static"
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
