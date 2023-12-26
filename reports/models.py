@@ -5,12 +5,12 @@ from django.db import models
 
 class Report(models.Model):
     class StatusChoices(models.TextChoices):
-        not_tested = "not_tested", "Не проверена"
-        tested = "tested", "Проверена"
-        need_repair = "need_repair", "В ремонте"
+        not_tested = "not_tested", ("Не проверена")
+        tested = "tested", ("Проверена")
+        need_repair = "need_repair", ("В ремонте")
 
     status = models.CharField(
-        choices=StatusChoices,
+        choices=StatusChoices.choices,
         default="not_tested",
         max_length=40,
         verbose_name="Состояние",

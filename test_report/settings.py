@@ -48,7 +48,15 @@ LOGGING = {
     },
 }
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = [
+    "172.18.0.2",
+    "test_report_nginx_1",
+    "192.168.1.35",
+    "127.0.0.1",
+    "localhost",
+]
+
+CSRF_TRUSTED_ORIGINS = ["http://192.168.1.35:8181"]
 
 
 # Application definition

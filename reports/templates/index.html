@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% block css %}
 <link rel="stylesheet" href="{% static 'css/reports/index.css' %}" />
-{% endblock %} {% block content%}
+{% endblock css %} {% block content %}
 
 <div class="wrapper vh-100">
   <div class="card" style="width: 25rem">
@@ -29,10 +29,7 @@
   </div>
   <br />
 
-  <a
-    class="btn btn btn-outline-dark"
-    href="{% url 'create_page' %}"
-    role="button"
+  <a class="btn btn-outline-dark" href="{% url 'create_page' %}" role="button"
     >Новый протокол</a
   >
 </div>
